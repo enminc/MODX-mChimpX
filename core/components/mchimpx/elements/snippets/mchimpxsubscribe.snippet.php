@@ -27,6 +27,28 @@
  * @author Bert Oost at OostDesign.nl <bert@oostdesign.nl>
  */
 
+/**
+ * Added by Adam Smith (aesmith) - Ethan New Media Inc. 10/3/2013
+ */
+
+// if true then we need to check for a flag (ie: checkbox that users has sais yes I want to join newsletter)
+$initialOptInReq      = $modx->getOption('mcInitialOptInReq', $scriptProperties, false);
+$initialOptInReqField = $modx->getOption('mcInitialOptInReqField', $scriptProperties, 'newsletter');
+
+if($initialOptInReq == 1 || strtolower($initialOptInReq) == 'true'){
+  if(empty($hook->getValue('initialOptInReqField')){
+    return true; // moving on , they do not wish to be on the list
+  }
+  else{
+    // keep moving forward they have opted to be on the list
+  }
+}
+else{
+  // An initial opt in is not required and hook runs as originally designed
+}
+
+/***************************************************************/
+
 $apikey = $modx->getOption('mcApiKey', $scriptProperties, false);
 $listid = $modx->getOption('mcListId', $scriptProperties, false);
 $emailField = $modx->getOption('mcEmailField', $scriptProperties, 'email');
