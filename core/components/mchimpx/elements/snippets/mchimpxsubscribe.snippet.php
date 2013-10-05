@@ -36,7 +36,8 @@ $initialOptInReq      = $modx->getOption('mcInitialOptInReq', $scriptProperties,
 $initialOptInReqField = $modx->getOption('mcInitialOptInReqField', $scriptProperties, 'newsletter');
 
 if($initialOptInReq == 1 || strtolower($initialOptInReq) == 'true'){
-  if(empty($hook->getValue('initialOptInReqField')){
+  $optInReqFld = $hook->getValue('initialOptInReqField');
+  if(empty($optInReqFld){
     return true; // moving on , they do not wish to be on the list
   }
   else{
